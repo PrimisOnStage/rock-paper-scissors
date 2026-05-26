@@ -7,6 +7,9 @@ function numToObject(num){
 function playRound(player_select){
     let comp_select = Math.floor(Math.random()*3);
     comp_select = numToObject(comp_select);
+    let comp_element = document.querySelector(".compSelection p");
+    comp_element.textContent = comp_select;
+
 
     console.log(`Player chose ${player_select} and Computer Chose ${comp_select}\n`);
     if (comp_select === player_select){
@@ -20,7 +23,11 @@ function playRound(player_select){
         console.log("Computer Wins!");
         comp_score++;
     }
-    console.log(`Player Score is ${player_score} and Computer Score is ${comp_score}`);
+    let score = document.querySelector(".score");
+    score.firstChild.textContent = `Player Score is ${player_score} and Computer Score is ${comp_score}`;
+    
+    score.lastChild.textContent = player_score == 5 ? "Player Wins": comp_score == 5 ? "Computer Wins": ""
+    
 }
 
 const buttons = document.querySelectorAll("#playerSelection button");
